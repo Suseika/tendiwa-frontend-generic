@@ -11,7 +11,7 @@ import org.tendiwa.plane.grid.dimensions.GridDimension
 class RenderingVicinity(
     private val space: Space,
     private val viewportSize: GridDimension
-)  {
+) {
     var tileBounds = GridRectangle(viewportSize)
 
     fun floorAt(x: Int, y: Int): FloorType =
@@ -19,4 +19,12 @@ class RenderingVicinity(
 
     fun wallAt(x: Int, y: Int): WallType =
         space.walls.chunkWithTile(x, y).wallAt(x, y)
+
+
 }
+
+/**
+ * Checks if the wall at x:y is not void.
+ */
+fun RenderingVicinity.hasWallAt(x: Int, y: Int): Boolean =
+    wallAt(x, y) != WallType.void
