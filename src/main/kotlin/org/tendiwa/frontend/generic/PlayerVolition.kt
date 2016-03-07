@@ -1,8 +1,8 @@
 package org.tendiwa.frontend.generic
 
-import org.tendiwa.backend.space.aspects.position
 import org.tendiwa.backend.space.Reality
 import org.tendiwa.backend.space.Voxel
+import org.tendiwa.backend.space.aspects.position
 import org.tendiwa.existence.NoReactionAspect
 import org.tendiwa.existence.NoStimuliAspectKind
 import org.tendiwa.time.Activity
