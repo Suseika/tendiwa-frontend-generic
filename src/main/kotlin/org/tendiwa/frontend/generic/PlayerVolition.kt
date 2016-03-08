@@ -8,6 +8,7 @@ import org.tendiwa.existence.NoStimuliAspectKind
 import org.tendiwa.time.Activity
 import org.tendiwa.time.ActivityProcess
 import org.tendiwa.time.ActivityResult
+import org.tendiwa.time.TimeStream
 
 class PlayerVolition() : NoReactionAspect(kind) {
     companion object {
@@ -17,8 +18,11 @@ class PlayerVolition() : NoReactionAspect(kind) {
     private val actor: PlayerActor = PlayerActor()
 
     fun sendActivity(context: Reality, activity: Activity) {
-        actor.activity = activity
-        actor.act(context)
+        actor.chooseNextActivity(activity)
+    }
+
+    fun addActorTo(timeStream: TimeStream<Reality>) {
+        timeStream.addActor(actor)
     }
 }
 

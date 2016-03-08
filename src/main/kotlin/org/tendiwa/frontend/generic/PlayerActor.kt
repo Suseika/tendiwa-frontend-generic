@@ -28,7 +28,15 @@ internal class PlayerActor : Actor<Reality> {
 
     override fun act(context: Reality): Activity {
         synchronized(frontendLock, {
+            frontendLock.wait()
             return activity
+        })
+    }
+
+    fun chooseNextActivity(activity: Activity) {
+        this.activity = activity
+        synchronized(frontendLock, {
+            frontendLock.notify()
         })
     }
 
