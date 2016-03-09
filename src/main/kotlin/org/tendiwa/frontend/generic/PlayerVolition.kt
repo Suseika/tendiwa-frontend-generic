@@ -3,18 +3,15 @@ package org.tendiwa.frontend.generic
 import org.tendiwa.backend.space.Reality
 import org.tendiwa.backend.space.Voxel
 import org.tendiwa.backend.space.aspects.position
+import org.tendiwa.existence.NoInitAspect
 import org.tendiwa.existence.NoReactionAspect
-import org.tendiwa.existence.NoStimuliAspectKind
+import org.tendiwa.existence.NoStimuliAspect
 import org.tendiwa.time.Activity
 import org.tendiwa.time.ActivityProcess
 import org.tendiwa.time.ActivityResult
 import org.tendiwa.time.TimeStream
 
-class PlayerVolition() : NoReactionAspect(kind) {
-    companion object {
-        val kind = NoStimuliAspectKind()
-    }
-
+class PlayerVolition() : NoReactionAspect, NoInitAspect, NoStimuliAspect {
     private val actor: PlayerActor = PlayerActor()
 
     fun sendActivity(context: Reality, activity: Activity) {
