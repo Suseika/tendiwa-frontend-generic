@@ -1,10 +1,10 @@
 package org.tendiwa.frontend.generic
 
 import org.tendiwa.backend.space.Reality
-import org.tendiwa.time.Activity
-import org.tendiwa.time.ActivityProcess
-import org.tendiwa.time.ActivityResult
-import org.tendiwa.time.Actor
+import org.tendiwa.backend.time.Activity
+import org.tendiwa.backend.time.ActivityProcess
+import org.tendiwa.backend.time.ActivityResult
+import org.tendiwa.backend.time.Actor
 
 internal class PlayerActor : Actor<Reality> {
     companion object {
