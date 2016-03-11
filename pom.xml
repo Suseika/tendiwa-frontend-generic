@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>org.tendiwa</groupId>
-            <artifactId>backend-space</artifactId>
+            <artifactId>reality</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
