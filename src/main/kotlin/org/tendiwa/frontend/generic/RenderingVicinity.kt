@@ -10,6 +10,7 @@ import org.tendiwa.backend.space.walls.WallType
 import org.tendiwa.backend.space.walls.walls
 import org.tendiwa.plane.grid.constructors.GridRectangle
 import org.tendiwa.plane.grid.dimensions.GridDimension
+import org.tendiwa.plane.grid.masks.GridMask
 
 class RenderingVicinity(
     private val space: Space,
@@ -25,6 +26,8 @@ class RenderingVicinity(
 
     val things: List<RealThing> =
         space.realThings.viewOfArea(tileBounds).things
+
+    var fieldOfView: GridMask = GridMask { x, y -> false }
 }
 
 /**
