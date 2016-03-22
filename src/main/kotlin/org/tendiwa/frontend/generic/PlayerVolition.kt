@@ -9,10 +9,10 @@ import org.tendiwa.backend.time.ActivityProcess
 import org.tendiwa.backend.time.ActivityResult
 import org.tendiwa.backend.time.TimeStream
 
-class PlayerVolition() : AbstractAspect() {
+class PlayerVolition(val reality: Reality) : AbstractAspect() {
     private val actor: PlayerActor = PlayerActor()
 
-    fun sendActivity(context: Reality, activity: Activity) {
+    fun sendActivity(activity: Activity) {
         actor.chooseNextActivity(activity)
     }
 
@@ -21,10 +21,9 @@ class PlayerVolition() : AbstractAspect() {
     }
 }
 
-fun PlayerVolition.move(reality: Reality, x: Int, y: Int) {
+fun PlayerVolition.move(x: Int, y: Int) {
     val position = host.position
     sendActivity(
-        reality,
         Activity(
             listOf(
                 ActivityProcess(1, ActivityResult {
