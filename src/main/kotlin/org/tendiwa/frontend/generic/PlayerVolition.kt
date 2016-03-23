@@ -1,9 +1,10 @@
 package org.tendiwa.frontend.generic
 
 import org.tendiwa.backend.existence.AbstractAspect
+import org.tendiwa.backend.existence.aspect
 import org.tendiwa.backend.space.Reality
 import org.tendiwa.backend.space.Voxel
-import org.tendiwa.backend.space.aspects.position
+import org.tendiwa.backend.space.aspects.Position
 import org.tendiwa.backend.time.Activity
 import org.tendiwa.backend.time.ActivityProcess
 import org.tendiwa.backend.time.ActivityResult
@@ -22,7 +23,7 @@ class PlayerVolition(val reality: Reality) : AbstractAspect() {
 }
 
 fun PlayerVolition.move(x: Int, y: Int) {
-    val position = host.position
+    val position = host.aspect<Position>()
     sendActivity(
         Activity(
             listOf(
