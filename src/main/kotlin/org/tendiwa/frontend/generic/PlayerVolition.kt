@@ -28,7 +28,7 @@ fun PlayerVolition.move(x: Int, y: Int) {
         Activity(
             listOf(
                 ActivityProcess(1, ActivityResult {
-                    position.move(reality, Voxel(x, y, position.voxel.z))
+                    position.change(reality, Voxel(x, y, position.voxel.z))
                 })
             )
         )
