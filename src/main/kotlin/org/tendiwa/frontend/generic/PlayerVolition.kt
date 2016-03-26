@@ -22,13 +22,13 @@ class PlayerVolition(val reality: Reality) : AbstractAspect() {
     }
 }
 
-fun PlayerVolition.move(x: Int, y: Int) {
+fun PlayerVolition.move(x: Int, y: Int, z: Int) {
     val position = host.aspect<Position>()
     sendActivity(
         Activity(
             listOf(
                 ActivityProcess(1, ActivityResult {
-                    position.change(reality, Voxel(x, y, position.voxel.z))
+                    position.change(reality, Voxel(x, y, z))
                 })
             )
         )
