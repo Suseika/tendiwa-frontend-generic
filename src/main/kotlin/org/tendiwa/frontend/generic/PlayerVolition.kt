@@ -10,7 +10,7 @@ import org.tendiwa.backend.time.ActivityProcess
 import org.tendiwa.backend.time.TimeStream
 
 class PlayerVolition(val reality: Reality) : AbstractAspect() {
-    private val actor: PlayerActor = PlayerActor()
+    private val actor: PlayerTemporalActor = PlayerTemporalActor()
 
     fun sendActivity(activity: Activity) {
         actor.chooseNextActivity(activity)

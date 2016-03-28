@@ -3,9 +3,9 @@ package org.tendiwa.frontend.generic
 import org.tendiwa.backend.space.Reality
 import org.tendiwa.backend.time.Activity
 import org.tendiwa.backend.time.ActivityProcess
-import org.tendiwa.backend.time.Actor
+import org.tendiwa.backend.time.TemporalActor
 
-internal class PlayerActor : Actor<Reality> {
+internal class PlayerTemporalActor : TemporalActor<Reality> {
     companion object {
         val failingActivity = Activity(
             listOf(
