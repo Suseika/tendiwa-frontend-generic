@@ -3,7 +3,6 @@ package org.tendiwa.frontend.generic
 import org.tendiwa.backend.space.Reality
 import org.tendiwa.backend.time.Activity
 import org.tendiwa.backend.time.ActivityProcess
-import org.tendiwa.backend.time.ActivityResult
 import org.tendiwa.backend.time.Actor
 
 internal class PlayerActor : Actor<Reality> {
@@ -12,7 +11,7 @@ internal class PlayerActor : Actor<Reality> {
             listOf(
                 ActivityProcess(
                     0,
-                    ActivityResult {
+                    {
                         throw IllegalStateException(
                             "Actual activity was not created"
                         )

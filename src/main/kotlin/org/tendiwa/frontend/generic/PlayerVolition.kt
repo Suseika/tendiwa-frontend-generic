@@ -7,7 +7,6 @@ import org.tendiwa.backend.space.Voxel
 import org.tendiwa.backend.space.aspects.Position
 import org.tendiwa.backend.time.Activity
 import org.tendiwa.backend.time.ActivityProcess
-import org.tendiwa.backend.time.ActivityResult
 import org.tendiwa.backend.time.TimeStream
 
 class PlayerVolition(val reality: Reality) : AbstractAspect() {
@@ -27,7 +26,7 @@ fun PlayerVolition.move(x: Int, y: Int, z: Int) {
     sendActivity(
         Activity(
             listOf(
-                ActivityProcess(1, ActivityResult {
+                ActivityProcess(1, {
                     position.change(reality, Voxel(x, y, z))
                 })
             )
