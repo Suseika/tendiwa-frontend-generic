@@ -10,7 +10,7 @@ internal class PlayerTemporalActor : TemporalActor<Reality> {
         val failingActivity = Activity(
             listOf(
                 ActivityProcess(
-                    0,
+                    1,
                     {
                         throw IllegalStateException(
                             "Actual activity was not created"
