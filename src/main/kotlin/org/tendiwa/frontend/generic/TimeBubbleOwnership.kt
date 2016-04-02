@@ -7,10 +7,7 @@ import org.tendiwa.backend.existence.aspect
 import org.tendiwa.backend.space.Reality
 import org.tendiwa.backend.space.TimeBubble
 import org.tendiwa.backend.space.aspects.Position
-import org.tendiwa.backend.space.chunks.ChunkCoordinate
-import org.tendiwa.backend.space.chunks.ChunkMask
-import org.tendiwa.backend.space.chunks.chunkCoordinate
-import org.tendiwa.backend.space.chunks.moveByChunks
+import org.tendiwa.backend.space.chunks.*
 import org.tendiwa.plane.grid.masks.BoundedGridMask
 import org.tendiwa.plane.grid.masks.StringGridMask
 
@@ -44,11 +41,18 @@ class TimeBubbleOwnership(
     }
 
     override fun reaction(reality: Reality, stimulus: Stimulus) {
-        if (stimulus is Position.Change) {
-            if (stimulus.new.chunkCoordinate != anchor) {
-                bubble.relocate(
-                    chunksAround(stimulus.new.chunkCoordinate, reality)
-                )
+        when (stimulus) {
+            is Position.Change -> {
+                if (!anchor.contains(stimulus.new)) {
+                    val newChunkCoordinate = stimulus.new.chunkCoordinate
+                    if (!bubble.chunkMask.contains(stimulus.new)) {
+                        bubble.removeActorsOf(host)
+                    }
+                    bubble.relocate(
+                        chunksAround(newChunkCoordinate, reality)
+                    )
+                    anchor = newChunkCoordinate
+                }
             }
         }
     }
