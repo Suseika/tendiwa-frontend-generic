@@ -4,6 +4,7 @@ import org.tendiwa.backend.contains
 import org.tendiwa.backend.existence.AbstractAspect
 import org.tendiwa.backend.existence.Stimulus
 import org.tendiwa.backend.existence.aspect
+import org.tendiwa.backend.existence.temporalActors
 import org.tendiwa.backend.space.Reality
 import org.tendiwa.backend.space.TimeBubble
 import org.tendiwa.backend.space.aspects.Position
@@ -41,16 +42,12 @@ class TimeBubbleOwnership(
     }
 
     override fun reaction(reality: Reality, stimulus: Stimulus) {
-        when (stimulus) {
-            is Position.Change -> {
+        when {
+            (stimulus is Position.Change && stimulus.host == host) -> {
                 if (!anchor.contains(stimulus.new)) {
                     val newChunkCoordinate = stimulus.new.chunkCoordinate
-                    if (!bubble.chunkMask.contains(stimulus.new)) {
-                        bubble.removeActorsOf(host)
-                    }
-                    bubble.relocate(
-                        chunksAround(newChunkCoordinate, reality)
-                    )
+                    val newMask = chunksAround(newChunkCoordinate, reality)
+                    bubble.relocate(newMask, host.temporalActors())
                     anchor = newChunkCoordinate
                 }
             }
